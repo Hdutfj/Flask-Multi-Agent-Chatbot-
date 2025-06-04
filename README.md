@@ -18,7 +18,7 @@ A modular chatbot system built using Flask for routing and OpenAI agents for dyn
 ## 🖼️ Demo UI Preview
 
 <p align="center">
-  <img src="code/ttt.PNG" width="700" alt="Chatbot UI Preview">
+  <img src="https://raw.githubusercontent.com/username/repository/main/code/ttt.PNG" width="700" alt="Chatbot UI Preview">
 </p>
 
 ---
