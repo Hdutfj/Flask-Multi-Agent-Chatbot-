@@ -18,7 +18,7 @@ A modular chatbot system built using Flask for routing and OpenAI agents for dyn
 ## 🖼️ Demo UI Preview
 
 <p align="center">
-  <img src="ttt.PNG" width="700" alt="Chatbot UI Preview">
+  <img src="./code/ttt.PNG" width="700" alt="Chatbot UI Preview">
 </p>
 
 ---
@@ -36,11 +36,12 @@ A modular chatbot system built using Flask for routing and OpenAI agents for dyn
 
 ```plaintext
 .
+├── code/
+│   └── ttt.PNG          # UI preview image saved inside 'code' folder
 ├── app.py               # Main Flask app with routing and session logic
 ├── hotelsys.py          # Backend logic using OpenAI multi-agent system
 ├── templates/
 │   └── bot.html         # Frontend UI for chat interface
 ├── static/
-│   └── ttt.PNG          # UI preview image
 ├── requirements.txt     # Dependencies
 └── README.md            # You're here!
