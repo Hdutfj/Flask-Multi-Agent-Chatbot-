@@ -1,62 +1,46 @@
-<h1 align="center">🤖 Multi-Agent Flask Chatbot</h1>
+# 🤖 Flask-Based Chatbot System
 
-<p align="center">
-  A smart and scalable chatbot system built with <strong>Flask</strong> that uses multiple AI agents (via OpenAI/Gemini API) to handle topic-specific conversations — from robotics to warfare tech!<br>
-  <em>One route. Many minds. Infinite potential.</em>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg">
-  <img src="https://img.shields.io/badge/Flask-Web%20Framework-lightgrey.svg">
-  <img src="https://img.shields.io/badge/OpenAI-Gemini-yellowgreen.svg">
-  <img src="https://img.shields.io/badge/Status-Ongoing-brightgreen.svg">
-</p>
+A modular chatbot system built using Flask for routing and OpenAI agents for dynamic conversation handling. The backend integrates multiple specialized agents to handle diverse queries, while the front-end uses a simple HTML form for user interaction. This project demonstrates how to serve and manage agent-based conversations through Flask with session-based message history tracking.
 
 ---
 
-## 🧠 What is This Project?
+## ✨ Features
 
-This chatbot project is designed as a **Flask web application** where a single route handles user input and dynamically responds through **specialized AI agents**. Each agent handles a distinct domain — such as robotics, construction, guns/planes, or general topics. It uses sessions to store the entire chat history so the conversation feels **fluid and continuous**, without any database required.
-
----
-
-## ✨ Key Features
-
-- 🔁 **Single Route Simplicity**  
-  Handle all frontend interactions from one Flask route while keeping backend logic scalable.
-
-- 🤖 **Multiple AI Agents**  
-  Each message is routed intelligently to a category-specific agent (e.g., ConstructionBot, RoboticsBot).
-
-- 💬 **Session-Based Chat History**  
-  Chat messages persist across the conversation, only resetting when refreshed or manually cleared.
-
-- 🔐 **API Key via `.env`**  
-  Secure API access using environment variables.
-
-- 📦 **Modular Agent System**  
-  All AI logic lives in `agentsystem.py` and can be expanded easily.
+- ✅ Flask routing with session-based chat history
+- 🧠 Multi-agent backend using OpenAI API
+- 📡 Interactive front-end via a lightweight HTML page
+- 💬 Persistent chat history until page refresh
+- 🔐 Securely integrated with OpenAI API key
+- 🛠️ Simple setup, highly extendable
 
 ---
 
 ## 🖼️ Demo UI Preview
 
 <p align="center">
-  <img src="https://i.imgur.com/DemoChatUI.png" width="700" alt="Chatbot UI Preview">
+  <img src="ttt.PNG" width="700" alt="Chatbot UI Preview">
 </p>
 
 ---
 
-## 🧩 Project Structure
+## 🚀 How It Works
 
-```bash
-📦 flask-multi-agent-chatbot/
+1. The user types a message in the web interface.
+2. Flask receives the input via a route and passes it to a Python backend.
+3. The backend uses OpenAI agents (defined in `hotelsys.py`) to determine the appropriate response.
+4. The reply is added to the session and displayed back in the browser.
+
+---
+
+## 📂 Project Structure
+
+```plaintext
+.
+├── app.py               # Main Flask app with routing and session logic
+├── hotelsys.py          # Backend logic using OpenAI multi-agent system
 ├── templates/
-│   └── chatbot.html           # Stylish frontend chat UI
+│   └── bot.html         # Frontend UI for chat interface
 ├── static/
-│   └── style.css              # Optional: CSS styling
-├── agentsystem(orti).py            # All AI agents and logic
-├── app(fork).py                    # Main Flask app (single route)
-├── .env                      # Stores API key securely
-├── requirements.txt          # Python dependencies
-└── README.md                 # You're reading it!
+│   └── ttt.PNG          # UI preview image
+├── requirements.txt     # Dependencies
+└── README.md            # You're here!
