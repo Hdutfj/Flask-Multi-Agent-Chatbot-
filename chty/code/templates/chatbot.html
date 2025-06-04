@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technology Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1e293b;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .history-placeholder {
+            background-color: #334155;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background-color: #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .chat-messages {
+            overflow-y: auto;
+            flex-grow: 1;
+            margin-bottom: 80px;
+        }
+
+        .chat-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .user {
+            background-color: #e0f2fe;
+            align-self: flex-end;
+            text-align: right;
+        }
+
+        .bot {
+            background-color: #f3f4f6;
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        .chat-form {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-form input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-size: 15px;
+        }
+
+        .chat-form button {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon {
+            background-color: #e2e8f0;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .icon:hover {
+            background-color: #cbd5e1;
+        }
+        .topic-selector {
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .topic-selector label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .topic-selector select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: border 0.3s ease;
+        }
+
+        .topic-selector select:focus {
+            border-color: #4a90e2;
+            outline: none;
+            background-color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Chat History</h2>
+        <div class="history-placeholder">
+            No chats yet.
+        </div>
+    </div>
+
+    <div class="chat-area">
+        <div class="chat-messages">
+            {% if request.method == 'POST' %}
+                <div class="chat-bubble user">
+                    <strong>You:</strong> {{ request.form["message"] }}
+                </div>
+                <div class="chat-bubble bot">
+                    <strong>Bot:</strong> {{ response }}
+                </div>
+            {% else %}
+                <div class="chat-bubble bot">
+                    👋 Hi there! Ask me about technology, robots, planes, or buildings.
+                </div>
+            {% endif %}
+        </div>
+
+        <form method="POST" class="chat-form">
+            <div class="icons">
+                <div class="icon">💬</div>
+                <div class="icon">📎</div>
+                <div class="icon">⚙️</div>
+            </div>
+            <div class="topic-selector">
+                <label for="category">🧠 Choose a topic:</label>
+                <select name="category" id="category">
+                  <option value="auto" style="background-color: rgb(230, 230, 199);">🔍 Auto Detect</option>
+                  <option value="robotics" style="background-color:#a1bbd8;">🤖 Robotics</option>
+                  <option value="construction" style="background-color: rgb(241, 193, 193);">🏗️ Construction</option>
+                  <option value="guns_planes" style="background-color: rgb(206, 243, 206);">✈️ Guns & Planes</option>
+                </select>
+              </div>
+              
+            <input type="text" name="message" placeholder="Type your message here..." required />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
